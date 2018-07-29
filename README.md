@@ -56,7 +56,7 @@ $options = [
                     'email' => 'user.one.one@gmail.com'
                 ]
             ],
-            'bcc' => [
+            'bcc' => [   // optional
                 [
                     'name' => 'user One Two',
                     'email' => 'user.one.two@gmail.com'
@@ -69,7 +69,7 @@ $options = [
         ]
     ],
     'subject' => 'Welcome to the club',
-    'attachment' => [
+    'attachment' => [   // optional
         [
             'file' => '/absolute/path/to/file.ext',
             'name' => 'file.ext'
@@ -78,7 +78,7 @@ $options = [
     'text' => '/Optional text if property view is not set/',
     'view' => [ // optional
         'path' => 'path/to/view',
-        'params' => [
+        'params' => [   // optional
             'additional' => 'data',
             'to' => 'forward to',
             'view' => 'renderer'
@@ -94,10 +94,21 @@ Keterangan masing-masing properti adalah sebagai berikut:
 
 1. `to`  
    Array list penerima email, nilai ini juga akan diteruskan ke view
-   jika menggunakan view renderer.
+   jika menggunakan view renderer. Masing-masing penerima harus memiliki
+   properti `email` dan `name`. Properti ini juga menerima tambahan
+   sub-properi sebagai berikut:
+   1. `cc`  
+      Properti ini adalah array yang berisi daftar penerima sebagai cc.
+   1. `bcc`  
+      Properti ini adalah array yang berisi daftar penerima sebagai bcc.
 1. `subject`  
    String email subject, nilai ini menerima parameter seperti `(:email)` 
    yang akan di ganti dengan nilai to.email.
+1. `attachment`  
+   Adalah array daftar file yang akan dikirimkan bersamaan dengan email.
+   Masing-masing file yang akan disisipkan harus memiliki profile `file`
+   yang adalah absolute path ke file yang akan dikirim, dan `name` yang adalah
+   nama file.
 1. `text`  
    Konten body email jika email reader user tidak mendukung html. Nilai dari
    properti ini juga yang akan digunakan sebagai body email jika properti `view`
