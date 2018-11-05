@@ -16,7 +16,9 @@ return [
     ],
     '__dependencies' => [
         'required' => [
-            'lib-view' => NULL
+            [
+                'lib-view' => NULL
+            ]
         ],
         'optional' => []
     ],
