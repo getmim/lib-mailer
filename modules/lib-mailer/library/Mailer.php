@@ -20,7 +20,7 @@ class Mailer
 
     private static function applyParams(string $text, array $params): string{
         foreach($params as $key => $val)
-            $text = str_replace('(:' . $key . ')', $val, $text);
+            $text = str_replace('(:' . $key . ')', (string)$val, $text);
         return $text;
     }
 
